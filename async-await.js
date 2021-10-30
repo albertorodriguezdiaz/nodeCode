@@ -21,10 +21,7 @@ const salarios = [
         id: 2,
         salario: 1500000
     },    
-    {
-        id: 3,
-        salario: 2500000
-    },
+
     
 ];
 
@@ -49,16 +46,23 @@ const getSalario = (id) => {
             : reject(`No se encontro el salario con id:  ${id}`);
     });
 }
-const getInfoUsuario = async(id) => {
-    const empleado = await getEmpleado(id);
-    const salario = await getSalario(id);
 
-    return(`El empleado con id: ${id} se llama: ${empleado} y gana: $${new Intl.NumberFormat().format(salario)}`);
+
+const getInfoUsuario = async(id) => {
+
+    try {
+        const empleado = await getEmpleado(id);
+        const salario = await getSalario(id);    
+        return(`El empleado con id: ${id} se llama: ${empleado} y gana: $${new Intl.NumberFormat().format(salario)}`);
+        
+    } catch (error) {
+        return error;
+    }
 }
 
 
 
-const id = 1;
+const id = 3;
 
 getInfoUsuario(id)
     .then(msg => console.log(msg))
