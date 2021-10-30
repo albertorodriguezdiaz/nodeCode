@@ -28,8 +28,8 @@ const getEmpleado = (id) => {
 
     const promesa = new Promise( (resolve, reject) =>{
         
-        const empleado = empleados.find( e => e.id === id)?.nombre
-        const salario = salarios.find( s => s.id === id)?.salario
+        const empleado = empleados.find( e => e.id === id)?.nombre;
+        const salario = salarios.find( s => s.id === id)?.salario;
 
         if(empleado){
             resolve(`El empleado con id: ${id} se llama: ${empleado} y gana: $${new Intl.NumberFormat().format(salario)}`);
